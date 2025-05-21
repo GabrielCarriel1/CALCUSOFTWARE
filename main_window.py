@@ -13,6 +13,8 @@ from UI.ecuaciones_diferenciales_UI import EcuacionesDiferencialesUI
 from UI.sir_ui import ModeloSIR_UI
 from module_logic.sistema_diferencial_ui import SistemaDiferencialUI
 from UI.distribuciones_ui import DistribucionesUI
+from UI.markov_ui import MarkovUI
+
 
 # === Función para rutas de recursos ===
 def recurso_relativo(ruta):
@@ -59,6 +61,7 @@ class MainWindow(ctk.CTk):
             ("\ud83e\uddec Modelo SIR", self.mostrar_sir),
             ("\ud83d\udcd8 Sistema de EDOs", self.mostrar_sistema),
             ("\ud83d\udcca Distribuciones", self.mostrar_distribuciones),
+            ("\ud83d\udcca Cadenas de Markov", self.mostrar_cadenas_markov),
             ("ℹ️ Acerca de", self.mostrar_acerca_de),
         ]
 
@@ -118,6 +121,7 @@ class MainWindow(ctk.CTk):
             ("\ud83e\uddec Modelo SIR", self.mostrar_sir),
             ("\ud83d\udcd8 Sistema de EDOs", self.mostrar_sistema),
             ("\ud83d\udcca Distribuciones", self.mostrar_distribuciones),
+            ("\ud83d\udcca Cadenas de Markov", self.mostrar_cadenas_markov),
             ("ℹ️ Acerca de", self.mostrar_acerca_de),
         ]
 
@@ -175,6 +179,11 @@ class MainWindow(ctk.CTk):
         self.limpiar_main()
         self.current_page = DistribucionesUI(self.main_content)
         self.current_page.pack(fill="both", expand=True)
+    
+    def mostrar_cadenas_markov(self):
+        self.limpiar_main()
+        self.current_page = MarkovUI(self.main_content)
+        self.current_page.pack(fill="both", expand=True)
 
     def mostrar_acerca_de(self):
         self.limpiar_main()
@@ -204,3 +213,10 @@ class MainWindow(ctk.CTk):
             ctk.CTkLabel(self.current_page, text=texto, font=texto_font, text_color="#ffffff", anchor="w", justify="left").pack(fill="x", padx=30, pady=3)
 
         ctk.CTkLabel(self.current_page, text="© 2025 - by Gabrielz", font=("Segoe UI", 12), text_color="#aaaaaa").pack(side="bottom", pady=15)
+        
+ctk.set_appearance_mode("system")
+ctk.set_default_color_theme("blue")
+
+if __name__ == "__main__":
+    app = MainWindow()
+    app.mainloop()
