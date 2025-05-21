@@ -71,7 +71,7 @@ Calculadora científica educativa desarrollada en Python con **interfaz moderna 
 
 ## 👨‍💻 Autor
 
-**Desarrollado por:** Ing. Gabriel Carriel  
+**Desarrollado por:** Gabriel Carriel  
 **Carrera:** Ingeniería en Software  
 **Universidad:** Universidad Estatal de Milagro – UNEMI
 
