@@ -30,6 +30,9 @@ Calculadora científica educativa desarrollada en Python con **interfaz moderna 
 - **Distribuciones y Monte Carlo**
   - Generación de números aleatorios: uniforme, congruencial
   - Estimación de áreas bajo curvas mediante método Monte Carlo
+- **Cadenas de Markov**
+  - Matriz y simulación
+  - Graficas de la simulación y diagrama de la matriz
 
 ---
 
@@ -42,6 +45,7 @@ Calculadora científica educativa desarrollada en Python con **interfaz moderna 
   - `numpy`
   - `matplotlib`
   - `Pillow` (para manejo de imágenes)
+  - `network` (para diagramas)
 
 ---
 
