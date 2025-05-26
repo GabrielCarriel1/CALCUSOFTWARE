@@ -14,6 +14,7 @@ from UI.sir_ui import ModeloSIR_UI
 from module_logic.sistema_diferencial_ui import SistemaDiferencialUI
 from UI.distribuciones_ui import DistribucionesUI
 from UI.markov_ui import MarkovUI
+from UI.optimization_ui import OptimizationUI
 
 
 # === Función para rutas de recursos ===
@@ -62,6 +63,7 @@ class MainWindow(ctk.CTk):
             ("\ud83d\udcd8 Sistema de EDOs", self.mostrar_sistema),
             ("\ud83d\udcca Distribuciones", self.mostrar_distribuciones),
             ("\ud83d\udcca Cadenas de Markov", self.mostrar_cadenas_markov),
+            ("📈 Optimización", self.mostrar_optimizacion),
             ("ℹ️ Acerca de", self.mostrar_acerca_de),
         ]
 
@@ -122,6 +124,7 @@ class MainWindow(ctk.CTk):
             ("\ud83d\udcd8 Sistema de EDOs", self.mostrar_sistema),
             ("\ud83d\udcca Distribuciones", self.mostrar_distribuciones),
             ("\ud83d\udcca Cadenas de Markov", self.mostrar_cadenas_markov),
+            ("📈 Optimización", self.mostrar_optimizacion),
             ("ℹ️ Acerca de", self.mostrar_acerca_de),
         ]
 
@@ -184,6 +187,19 @@ class MainWindow(ctk.CTk):
         self.limpiar_main()
         self.current_page = MarkovUI(self.main_content)
         self.current_page.pack(fill="both", expand=True)
+
+    def mostrar_optimizacion(self):
+        # OptimizationUI is a Toplevel window.
+        # Manage its instance to prevent multiple openings.
+        if not hasattr(self, 'optimization_window') or \
+           not self.optimization_window.winfo_exists():
+            self.optimization_window = OptimizationUI(master=self)
+            self.optimization_window.grab_set() # To make it modal
+        else:
+            self.optimization_window.lift() # Bring to front if already open
+        # Since it's a Toplevel, it's not packed into main_content and doesn't replace self.current_page.
+        # The main content area can remain as is, or be cleared if desired.
+        # For now, main_content is not cleared.
 
     def mostrar_acerca_de(self):
         self.limpiar_main()
